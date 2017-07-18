@@ -2,7 +2,7 @@ name := "EmojiClusterAnalysis"
 
 version := "0.1"
 
-// Starting Spark version 2.0, Spark is built with Scala 2.11 by default. Scala 2.10 users should download the Spark source package and build with Scala 2.10 support.
+// Starting Spark version 2.0, Spark is built with Scala 2.11 by default.
 scalaVersion := "2.11.11"
 
 // Spark Information
