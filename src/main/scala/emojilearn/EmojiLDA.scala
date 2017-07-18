@@ -42,7 +42,7 @@ object EmojiLDA {
           }
 
           // Set LDA parameters
-          val numTopics = 10
+          val numTopics = 5
           val lda = new LDA().setK(numTopics).setMaxIterations(100)
 
           val ldaModel = lda.run(documents)
@@ -55,21 +55,23 @@ object EmojiLDA {
            * Print results.
            */
           import java.io._
-          val pw = new PrintWriter(new File("Results.txt" ))
+          val pw = new PrintWriter(new File("ResultsWith_Topics=5&MaxTerms=20.txt" ))
 
-          pw.println(s"Finished training LDA model.  Summary:")
-          pw.println(s"==========")
+          println(s"Finished training LDA model.\nSummary:")
+          println(s"==========")
 
           // Print the topics, showing the top-weighted terms for each topic.
-          val topicIndices = ldaModel.describeTopics(maxTermsPerTopic = 10)
+          val topicIndices = ldaModel.describeTopics(maxTermsPerTopic = 20)
           val topics = topicIndices.map { case (terms, termWeights) =>
             terms.map(vocabArray(_)).zip(termWeights)
           }
-          pw.println(s"$numTopics topics:")
+          pw.println(s"\n$numTopics topics:\n")
           topics.zipWithIndex.foreach { case (topic, i) =>
-            pw.println(s"TOPIC ${i + 1}")
-            topic.foreach { case (term, weight) => pw.println(s"$term\t$weight") }
-            pw.println(s"==========")
+            pw.println(s"### Topic ${i + 1}\n")
+            pw.println(s"| Term | Weight |")
+            pw.println(s"| -------- | -------- |")
+            topic.foreach { case (term, weight) => pw.println(f"| $term | $weight%1.7f |") }
+            pw.println(s"| -------- | -------- |\n")
           }
           pw.close
 
