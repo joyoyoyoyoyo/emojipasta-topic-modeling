@@ -14,14 +14,19 @@ object EmojiClusterAnalysis {
   def emojiClusterAnalysis(sc: SparkContext)(loadFile: String): Unit = {
     val emojiFrequency = sc.textFile(loadFile)
       .flatMap(line => line.split("\\s+")) // .flatMap(_.split("\\s+"))
-      .map(word => (word, 1)) //
+      .map(_.replaceAll(
+      "[,.!?:;]", "") // Strip punctuation and convert to lowercase
+      .trim
+      .toLowerCase)
+      .filter(!_.isEmpty) // Filter any empty strings
+      .map(word => (word, 1)) 
       .reduceByKey(_ + _) // .reduceByKey{ case (x, y) => x + y }
-
+      .sortBy(_._2, ascending = false)
 
     val today = ZonedDateTime.now(ZoneId.of("UTC")).toString
 
-    emojiFrequency.saveAsTextFile(s"output/{$today}EmojiFrequency.txt")
-    
+    emojiFrequency.saveAsTextFile(s"transformed-output/{$today}EmojiFrequency.txt")
+
   }
 
 
