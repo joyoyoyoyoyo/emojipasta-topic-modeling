@@ -23,4 +23,4 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-sql" % sparkVersion,
   "org.apache.spark" %% "spark-mllib" % sparkVersion
 )
-mainClass in Compile := Some("emojilearn.EmojiLDA")
+mainClass in Compile := Some("EmojiClusterAnalysis")

@@ -1,13 +1,16 @@
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.functions.unix_timestamp
 
+import emojilearn.EmojiLDA
+
 import java.time._
 
 object EmojiClusterAnalysis {
 
   def main(args: Array[String]): Unit = {
 
-    sparkInit("local", "EmojiClusterAnalysis", emojiClusterAnalysis _)
+    // sparkInit("local", "EmojiClusterAnalysis", emojiClusterAnalysis _)
+    sparkInit("local", "EmojiLDA", EmojiLDA.LDA _)
 
   }
 
@@ -19,13 +22,14 @@ object EmojiClusterAnalysis {
       .trim
       .toLowerCase)
       .filter(!_.isEmpty) // Filter any empty strings
-      .map(word => (word, 1)) 
+      .map(word => (word, 1))
       .reduceByKey(_ + _) // .reduceByKey{ case (x, y) => x + y }
       .sortBy(_._2, ascending = false)
 
     val today = ZonedDateTime.now(ZoneId.of("UTC")).toString
 
-    emojiFrequency.saveAsTextFile(s"transformed-output/{$today}EmojiFrequency.txt")
+    // emojiFrequency.saveAsTextFile(s"output/{$today}EmojiFrequency.txt")
+    // emojiFrequency.saveAsTextFile(s"transformed-output/{$today}EmojiFrequency.txt")
 
   }
 
