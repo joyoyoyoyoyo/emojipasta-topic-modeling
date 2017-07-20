@@ -23,4 +23,18 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-sql" % sparkVersion,
   "org.apache.spark" %% "spark-mllib" % sparkVersion
 )
-mainClass in Compile := Some("EmojiClusterAnalysis")
+
+// allows us to include Reactors
+resolvers ++= Seq(
+  "Sonatype OSS Snapshots" at
+    "https://oss.sonatype.org/content/repositories/snapshots",
+  "Sonatype OSS Releases" at
+    "https://oss.sonatype.org/content/repositories/releases"
+)
+libraryDependencies ++= Seq(
+  "io.reactors" %% "reactors" % "0.8"
+)
+
+
+// main class for runtime
+mainClass in Compile := Some("spideremoji.Spider")
