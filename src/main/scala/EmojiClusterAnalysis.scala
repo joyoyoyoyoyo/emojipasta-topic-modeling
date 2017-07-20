@@ -1,7 +1,7 @@
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.functions.unix_timestamp
 
-import emojilearn.EmojiLDA
+import learnemoji.EmojiLDA
 
 import java.time._
 

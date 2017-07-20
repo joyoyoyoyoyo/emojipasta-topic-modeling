@@ -1,4 +1,4 @@
-package emojilearn
+package learnemoji
 
 import org.apache.spark.mllib.clustering.{DistributedLDAModel, LDA}
 import org.apache.spark.mllib.linalg.{Vector, Vectors}
