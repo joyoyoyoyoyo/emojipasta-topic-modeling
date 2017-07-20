@@ -7,6 +7,7 @@ scalaVersion := "2.11.11"
 
 // Spark Information
 val sparkVersion = "2.1.1"
+val akkaV = "2.5.3"
 
 // allows us to include spark packages
 resolvers += "bintray-spark-packages" at
@@ -35,6 +36,13 @@ libraryDependencies ++= Seq(
   "io.reactors" %% "reactors" % "0.8"
 )
 
+libraryDependencies ++= Seq(
+  "com.typesafe.akka" %% "akka-actor"% akkaV
+)
+
+libraryDependencies ++= Seq(
+  "org.jsoup"         % "jsoup"% "1.8+"
+)
 
 // main class for runtime
 mainClass in Compile := Some("spideremoji.Spider")
