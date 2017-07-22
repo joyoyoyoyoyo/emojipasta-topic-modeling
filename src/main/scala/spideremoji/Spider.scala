@@ -1,6 +1,7 @@
 package spideremoji
 
 import io.reactors.Reactor
+import scala.io.{Codec, Source}
 
 /**
   * Created by marblecake on 7/19/17.
@@ -8,9 +9,13 @@ import io.reactors.Reactor
 object Spider {
 
   def main(args: Array[String]) = {
-    val url = "http://www.reddit.com/r/emojipasta/"
-    val response = scala.io.Source.fromURL(url)
-    System.out.println(response)
+    val blockingURL = "http://reddit.com/r/emojipasta"
+    // TODO: Adjust for blocking
+    val accessibleURL = "https://en.wikipedia.org/wiki/Cat"
+    // val response = scala.io.Source.fromURL(url)
+    val input = new java.net.URL(accessibleURL).openStream()
+    val generator =  Source.fromInputStream(input)(Codec.UTF8).getLines()
+    System.out.println(generator.mkString)
   }
 
 }
