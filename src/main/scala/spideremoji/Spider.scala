@@ -1,6 +1,5 @@
 package spideremoji
 
-import io.reactors.Reactor
 import scala.io.{Codec, Source}
 
 /**
