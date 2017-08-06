@@ -12,5 +12,4 @@ object Spider {
     val response = scala.io.Source.fromURL(url)
     System.out.println(response)
   }
-
 }
