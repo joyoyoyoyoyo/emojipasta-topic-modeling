@@ -1,5 +1,5 @@
 package shared
 
 object SharedMessages {
-  def itWorks = "It works!"
+  def unicode = "\uD83D\uDC7B"
 }
