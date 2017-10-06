@@ -1,9 +1,16 @@
-* { padding: 0; margin: 0; }
-canvas { background: #eee; display: block; margin: 0 auto; }
+* {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background-color: #FFFFF;
+}
+
+canvas {
+  background: #eee;
+  display: block;
+  margin: 0 auto;
+}
 
 #fight-to-the-death {
-  width: 100%;
-  height: 60%;
-  /*width: 480px;*/
-  /*height: 320px;*/
+  /**  TODO: Scaling **/
 }
