@@ -8,6 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('emojichefs');
+  this.route('emojipasta');
 });
 
 export default Router;
