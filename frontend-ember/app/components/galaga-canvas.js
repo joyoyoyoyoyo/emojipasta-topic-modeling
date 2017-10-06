@@ -3,44 +3,23 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   didInsertElement() {
     this._super(...arguments);
-      // storing a reference to the canvas and creating a 2D rendering context
+    var canvas = document.getElementById('fight-to-the-death')
+    var ctx = canvas.getContext('2d')
 
-      var canvas =  document.getElementById('fight-to-the-death');
-      var ctx = canvas.getContext('2d');
+    // 2D-Sphere
+    var x = canvas.width / 2;
+    var y = canvas.height - 30;
 
-      // Red square
+    var draw = function() {
       ctx.beginPath();
-      ctx.rect(20, 40, 50, 50);
-      ctx.fillStyle = '#FF0000';
+      ctx.arc(x, y, 10, 0, Math.PI * 2);
+      ctx.fillStyle = '#0095DD';
       ctx.fill();
       ctx.closePath();
 
-      // Green circle
-      ctx.beginPath();
-      ctx.arc(240, 160, 20, 0, Math.PI * 2, false);
-      ctx.fillStyle = 'green';
-      ctx.fill();
-      ctx.closePath();
-
-      // Blue outline
-      ctx.beginPath();
-      ctx.rect(160, 10, 100, 40);
-      ctx.strokeStyle = 'rgba(0, 0, 255, 0.5)';
-      ctx.stroke();
-      ctx.closePath();
-  }
+    }
+    // the draw function will be executed every 10 seconds
+    setInterval(draw, 10);
+  },
 
 });
-
-
-// TODO:Add UI menu:
-/**
-  * IM FORGETTING YOU, GUMWAA!😭👋
-  * ██]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] 10% complete.....
-  * ████]]]]]]]]]]]]]]]]]]]]]]]]]]] 35% complete....
-  * ███████]]]]]]]]]]]]]]]] 60% complete....
-  * ███████████] 99% complete..... 🚫ERROR!🚫
-  **/
-// Font stuff for later
-// ctx.font = '48px serif';
-// ctx.fillText('😭', 50, 100);
