@@ -1,0 +1,7 @@
+* { padding: 0; margin: 0; }
+canvas { background: #eee; display: block; margin: 0 auto; }
+
+#fight-to-the-death {
+  width: 480px;
+  height: 320px;
+}
