@@ -13,6 +13,7 @@ export default Ember.Component.extend({
     var dy = -2;
 
     var draw = function() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
       ctx.beginPath();
       ctx.arc(x = x + dx, y = y + dy, 10, 0, Math.PI * 2);
       ctx.fillStyle = '#0095DD';
